@@ -1,0 +1,32 @@
+<!DOCTYPE tiles-definitions PUBLIC
+"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+	<definition name="template" template="/WEB-INF/view/main_template.jsp">
+		<put-attribute name="header" value="/WEB-INF/view/tiles/header.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/view/tiles/menu.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/view/tiles/footer.jsp" />
+	</definition>
+	<definition name="index" extends="template">
+		<put-attribute name="body" value="/WEB-INF/view/index.jsp" />
+	</definition> 
+	<definition name="listOfLinks" extends="template">
+		<put-attribute name="body" value="/WEB-INF/view/listOfLinks.jsp" />
+	</definition>
+	<definition name="newKeyword" extends="template">
+		<put-attribute name="body" value="/WEB-INF/view/newKeyword.jsp" />
+	</definition>
+	<definition name="newLink" extends="template">
+		<put-attribute name="body" value="/WEB-INF/view/newLink.jsp" />
+	</definition>
+	<definition name="newSubject" extends="template">
+		<put-attribute name="body" value="/WEB-INF/view/newSubject.jsp" />
+	</definition>
+	<definition name="searchData" extends="template">
+		<put-attribute name="body" value="/WEB-INF/view/searchData.jsp" />
+	</definition>
+	<definition name="searchPage" extends="template">
+		<put-attribute name="body" value="/WEB-INF/view/searchPage.jsp" />
+	</definition>
+</tiles-definitions>
+	      
