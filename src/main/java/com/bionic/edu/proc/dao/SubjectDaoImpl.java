@@ -37,6 +37,15 @@ public class SubjectDaoImpl implements SubjectDao {
 
 	@Override
 	public void delete(int id) {
+		TypedQuery<Link> query = em
+				.createQuery("SELECT l FROM Link l WHERE l.subject.id = " + id + " ORDER BY l.keyword", Link.class);
+		List<Link> linkList = query.getResultList();
+		for (Link link : linkList) {
+			if (link != null) {
+				link.setSubject(null);
+				em.merge(link);
+			}
+		}
 		Subject subject = em.find(Subject.class, id);
 		if (subject != null) {
 			em.remove(subject);
