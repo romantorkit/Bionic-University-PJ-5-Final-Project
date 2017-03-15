@@ -36,6 +36,15 @@ public class KeywordDaoImpl implements KeywordDao {
 
 	@Override
 	public void delete(int id) {
+		TypedQuery<Link> query = em
+				.createQuery("SELECT l FROM Link l WHERE l.keyword.id = " + id + " ORDER BY l.subject", Link.class);
+		List<Link> linkList = query.getResultList();
+		for (Link link : linkList) {
+			if (link != null) {
+				link.setKeyword(null);
+				em.merge(link);
+			}
+		}
 		Keyword keyword = em.find(Keyword.class, id);
 		if (keyword != null)
 			em.remove(keyword);
