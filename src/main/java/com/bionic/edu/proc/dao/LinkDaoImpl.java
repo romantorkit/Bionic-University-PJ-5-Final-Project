@@ -59,8 +59,15 @@ public class LinkDaoImpl implements LinkDao {
 	@Override
 	public void delete(int id) {
 		Link link = em.find(Link.class, id);
-		if (link != null)
+		if (link != null) {
+			link.setSubject(null);
+			link.setKeyword(null);
+			em.merge(link);
+		}
+		link = em.find(Link.class, id);
+		if (link != null) {
 			em.remove(link);
+		}
 	}
 
 }
